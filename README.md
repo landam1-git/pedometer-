@@ -35,7 +35,9 @@ On first launch, grant the **Physical activity** permission (and notifications o
 
 `TYPE_STEP_COUNTER` reports the total number of steps since the phone last booted.
 `StepAccumulator` stores the previous reading and adds the difference to today's total.
-If the reading goes down, the phone rebooted, so the full reading counts as new steps.
+After a reboot (detected from the boot count and uptime) the full reading counts as new steps.
+Readings that jump by more steps than anyone could walk in the elapsed time (some phones
+report 0 before their real total) are not counted; they only reset the baseline.
 Steps taken while the service wasn't running are credited to the day the next reading arrives.
 
 | File | Purpose |
