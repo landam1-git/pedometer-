@@ -29,6 +29,10 @@ adb install app/build/outputs/apk/debug/app-debug.apk
 Every push also builds a debug APK on GitHub Actions — download it from the
 **pedometer-debug-apk** artifact of the latest *Android build* workflow run.
 
+Debug builds are signed with the shared key in `app/debug.keystore`, so a newer debug APK
+installs over an older one and keeps your step history. This key is public, so use your
+own private key for anything you publish.
+
 On first launch, grant the **Physical activity** permission (and notifications on Android 13+).
 
 ## How it works
